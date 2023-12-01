@@ -17,7 +17,7 @@ async function addMessageToQueue(queue, message) {
     const url = `http://localhost:4000/receive-message?queue=${queue}&message=${message}`;
 
     const req = http.get(url, (res) => {
-      console.log(`statusCode: ${res.statusCode} for queue ${queue} and message ${message}`);
+      console.log(new Date(), `statusCode: ${res.statusCode} for queue ${queue} and message ${message}`);
       resolve();
     });
 
@@ -49,6 +49,7 @@ async function main() {
 main()
   .then(() => {
     console.log('Done');
+    process.exit(0);
   })
   .catch((error) => {
     console.error(error);

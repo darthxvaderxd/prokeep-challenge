@@ -1,17 +1,23 @@
+# i chose to write the file to disk, because i am not familiar with elixir
+# and i wanted to make sure i could get the queue working as not sure if
+# there is a way to use a global store in elixir
+
 defmodule MessageQueue do
   def storeMapToDisk(queues) do
     File.write!("message-queue.txt", :erlang.term_to_binary(queues))
   end
 
-  def addNewMessageForQueue(queue, message) do
+  def loadMapFromDisk() do
     if !File.exists?("message-queue.txt") do
       storeMapToDisk(%{})
     end
 
-    queues =  File.read!("message-queue.txt")
+    File.read!("message-queue.txt")
       |> :erlang.binary_to_term()
+  end
 
-    IO.puts("queues: #{inspect queues}")
+  def addNewMessageForQueue(queue, message) do
+    queues = loadMapFromDisk()
 
     if Map.has_key?(queues, queue) do
       IO.puts("has key #{inspect queue}")
@@ -27,13 +33,7 @@ defmodule MessageQueue do
   end
 
   def processMessageFromQueues() do
-    if !File.exists?("message-queue.txt") do
-      storeMapToDisk(%{})
-    end
-
-    queues =  File.read!("message-queue.txt")
-      |> :erlang.binary_to_term()
-
+    queues = loadMapFromDisk()
     keys = Map.keys(queues)
 
     if Enum.count(keys) > 0 do

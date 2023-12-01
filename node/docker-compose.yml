@@ -4,6 +4,8 @@ services:
   message-queue:
     build:
       dockerfile: Dockerfile
+    volumes:
+      - ./:/app
     ports:
       - "4000:4000"
     command: "'yarn start'"

@@ -23,4 +23,5 @@ change this by running it like so:
 1. Install NodeJS
 2. Run `yarn install` in the node directory of this project
 3. Run `yarn start` in the node directory of this project
+4. The application will be running on port 4000
 

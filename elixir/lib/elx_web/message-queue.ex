@@ -20,12 +20,10 @@ defmodule MessageQueue do
     queues = loadMapFromDisk()
 
     if Map.has_key?(queues, queue) do
-      IO.puts("has key #{inspect queue}")
       # add message to queue
       queues = Map.put(queues, queue, [message | Map.get(queues, queue)])
       storeMapToDisk(queues)
     else
-      IO.puts("does not have key #{inspect queue}")
       # create queue and add message to queue
       queues = Map.put(queues, queue, [message])
       storeMapToDisk(queues)

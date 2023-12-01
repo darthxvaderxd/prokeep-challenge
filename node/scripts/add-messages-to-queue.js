@@ -4,7 +4,7 @@ const numberOfMessages = Number(process?.argv[2] ?? 100);
 const numberOfQueues = Number(process?.argv[3] ?? 4);
 
 // limit number of http connections to 20
-http.globalAgent.maxSockets = 20;
+http.globalAgent.maxSockets = 5;
 
 /**
  * Adds a message to a queue
@@ -18,6 +18,7 @@ async function addMessageToQueue(queue, message) {
 
     const req = http.get(url, (res) => {
       console.log(new Date(), `statusCode: ${res.statusCode} for queue ${queue} and message ${message}`);
+      req.connection.destroy();
       resolve();
     });
 
@@ -49,7 +50,6 @@ async function main() {
 main()
   .then(() => {
     console.log('Done');
-    process.exit(0);
   })
   .catch((error) => {
     console.error(error);

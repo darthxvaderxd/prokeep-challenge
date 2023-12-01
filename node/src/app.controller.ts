@@ -11,7 +11,7 @@ import { AppService } from './app.service';
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @Get('/')
+  @Get('/receive-message')
   newMessageForQueue(
     @Query('queue') queue: string,
     @Query('message') message: string,

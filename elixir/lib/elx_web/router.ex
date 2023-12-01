@@ -9,7 +9,7 @@ defmodule ElxWeb.Router do
     pipe_through :api
   end
 
-  scope "/message", ElxWeb do
+  scope "/receive-message", ElxWeb do
     pipe_through :api
     get "/", MessageController, :addMessageToQueue
   end

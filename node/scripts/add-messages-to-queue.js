@@ -14,7 +14,7 @@ http.globalAgent.maxSockets = 20;
  */
 async function addMessageToQueue(queue, message) {
   return new Promise((resolve, reject) => {
-    const url = `http://localhost:4000/?queue=${queue}&message=${message}`;
+    const url = `http://localhost:4000/receive-message?queue=${queue}&message=${message}`;
 
     const req = http.get(url, (res) => {
       console.log(`statusCode: ${res.statusCode} for queue ${queue} and message ${message}`);

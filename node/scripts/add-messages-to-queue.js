@@ -47,9 +47,9 @@ async function main() {
 }
 
 main()
-    .then(() => {
-      console.log('Done');
-    })
-    .catch((error) => {
-      console.error(error);
-    });
+  .then(() => {
+    console.log('Done');
+  })
+  .catch((error) => {
+    console.error(error);
+  });

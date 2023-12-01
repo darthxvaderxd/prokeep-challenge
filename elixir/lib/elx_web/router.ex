@@ -9,6 +9,11 @@ defmodule ElxWeb.Router do
     pipe_through :api
   end
 
+  scope "/message", ElxWeb do
+    pipe_through :api
+    get "/", MessageController, :addMessageToQueue
+  end
+
   # Enable LiveDashboard and Swoosh mailbox preview in development
   if Application.compile_env(:elx, :dev_routes) do
     # If you want to use the LiveDashboard in production, you should put

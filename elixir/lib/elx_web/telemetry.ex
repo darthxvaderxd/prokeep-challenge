@@ -4,6 +4,7 @@ defmodule ElxWeb.Telemetry do
 
   def start_link(arg) do
     Supervisor.start_link(__MODULE__, arg, name: __MODULE__)
+    Supervisor.start_link([ElxWeb.Periodically], strategy: :one_for_one)
   end
 
   @impl true

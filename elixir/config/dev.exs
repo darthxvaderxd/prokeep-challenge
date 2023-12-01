@@ -3,7 +3,7 @@ import Config
 # Configure your database
 config :elx, Elx.Repo,
   username: "postgres",
-  password: "postgres",
+  password: "example",
   hostname: "localhost",
   database: "elx_dev",
   stacktrace: true,

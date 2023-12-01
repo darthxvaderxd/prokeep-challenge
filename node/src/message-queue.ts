@@ -31,7 +31,10 @@ export function processSingleMessageFromAllQueues(): void {
       const queueMessage = queues[queue].shift();
 
       if (queueMessage) {
-        console.log(new Date(), `Queue: ${queue} - Message: ${queueMessage.message}`);
+        console.log(
+          new Date(),
+          `Queue: ${queue} - Message: ${queueMessage.message}`,
+        );
       }
     }
   });

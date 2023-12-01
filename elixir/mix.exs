@@ -1,9 +1,9 @@
-defmodule Hello.MixProject do
+defmodule Elx.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :hello,
+      app: :elx,
       version: "0.1.0",
       elixir: "~> 1.14",
       elixirc_paths: elixirc_paths(Mix.env()),
@@ -18,7 +18,7 @@ defmodule Hello.MixProject do
   # Type `mix help compile.app` for more information.
   def application do
     [
-      mod: {Hello.Application, []},
+      mod: {Elx.Application, []},
       extra_applications: [:logger, :runtime_tools]
     ]
   end
@@ -36,10 +36,6 @@ defmodule Hello.MixProject do
       {:phoenix_ecto, "~> 4.4"},
       {:ecto_sql, "~> 3.10"},
       {:postgrex, ">= 0.0.0"},
-      {:phoenix_html, "~> 3.3"},
-      {:phoenix_live_reload, "~> 1.2", only: :dev},
-      {:phoenix_live_view, "~> 0.20.1"},
-      {:floki, ">= 0.30.0", only: :test},
       {:phoenix_live_dashboard, "~> 0.8.2"},
       {:esbuild, "~> 0.8", runtime: Mix.env() == :dev},
       {:tailwind, "~> 0.2.0", runtime: Mix.env() == :dev},

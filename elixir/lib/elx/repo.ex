@@ -1,5 +1,5 @@
-defmodule Hello.Repo do
+defmodule Elx.Repo do
   use Ecto.Repo,
-    otp_app: :hello,
+    otp_app: :elx,
     adapter: Ecto.Adapters.Postgres
 end

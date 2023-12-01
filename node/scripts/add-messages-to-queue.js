@@ -3,8 +3,8 @@ const http = require('http');
 const numberOfMessages = Number(process?.argv[2] ?? 100);
 const numberOfQueues = Number(process?.argv[3] ?? 4);
 
-// limit number of http connections to 10
-http.globalAgent.maxSockets = 10;
+// limit number of http connections to 20
+http.globalAgent.maxSockets = 20;
 
 /**
  * Adds a message to a queue

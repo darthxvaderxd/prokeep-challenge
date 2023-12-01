@@ -2,8 +2,9 @@ import {
   Controller,
   Get,
   Query,
-  Response,
+  Res,
 } from '@nestjs/common';
+import { Response } from 'express';
 import { AppService } from './app.service';
 
 @Controller()
@@ -14,8 +15,8 @@ export class AppController {
   newMessageForQueue(
     @Query('queue') queue: string,
     @Query('message') message: string,
-    @Response() response: any,
-  ): void {
+    @Res() response: Response,
+  ): Response {
     if (!queue) {
       return response.status(400)
         .send('No queue specified');
